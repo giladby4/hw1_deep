@@ -59,13 +59,21 @@ The model is slightly overfitted to the training set. we can see the accuracy ra
 part3_q1 = r"""
 **Your answer:**
 
+The ideal pattern to see in a residual plot should be an evenly spread cluster
+of residual points along the horizontal axis and centered around the zero value 
+of that same axis indicating a small errors.
 
-Write your answer using **markdown** and $\LaTeX$:
-```python
-# A code block
-a = 2
-```
-An equation: $e^{i\pi} -1 = 0$
+Plot examination:
+Examining the top-5 features we can see  a trend that tends away from zero,
+meaning larger residuals that translate into less accurate results.
+Moreover, we can see that the residuals in the top-5 plots
+are spread far away from the fitted line indicating in poor learning of the data.
+After applying the non-linearity, we can see a clear improvement in the plotted
+residuals, such that they're more evenly distributed across the horizontal axis
+and mostly centered around the zero value. We can also see that the fitted line
+describes the residuals much more accurately according to our description in the
+first part of the question.
+
 
 """
 
