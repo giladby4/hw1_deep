@@ -250,7 +250,13 @@ def cv_best_hyperparams(
     #  - You can use MSE or R^2 as a score.
 
     # ====== YOUR CODE: ======
-    raise NotImplementedError()
+    #print(model.get_params().keys())
+    parameters_grid = {'bostonfeaturestransformer__degree' : degree_range,
+                       'linearregressor__reg_lambda' : lambda_range}
+    k_folds = sklearn.model_selection.KFold(n_splits=k_folds, shuffle=True)
+    k_folds_grid_search = sklearn.model_selection.GridSearchCV(model, parameters_grid, cv=k_folds,scoring='r2')
+    k_folds_grid_search.fit(X, y)
+    best_params = k_folds_grid_search.best_params_
     # ========================
 
     return best_params
