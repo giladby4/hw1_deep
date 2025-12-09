@@ -79,14 +79,16 @@ first part of the question.
 
 part3_q2 = r"""
 **Your answer:**
+1. After adding non-linear features to our data the model is still a linear model.
+   the non-linear features map our data to a higher dimension, yet the produced decision boundary is still linear in that
+   dimension.
+2. Yes, as shown in intro to machine learning (tutorial 9 on Regression) we can fit any non=linear function of the
+original features but our model will be verry prone to overfitting. Various approaches were shown
+as to how to mitigate the problem of overfitting e.x adding a regularization component to the loss function.
 
-
-Write your answer using **markdown** and $\LaTeX$:
-```python
-# A code block
-a = 2
-```
-An equation: $e^{i\pi} -1 = 0$
+3. Adding non-linear features would produce decision boundaries that are more complex and most likely to curved in the
+   in the original input space. Moreover, in that transformed space the (given the dimension is high enough) $W$ is a 
+   linear hyperplane. As where in the original space the decision boundary is not a linear hyperplane.
 
 """
 
@@ -94,12 +96,21 @@ part3_q3 = r"""
 **Your answer:**
 
 
-Write your answer using **markdown** and $\LaTeX$:
-```python
-# A code block
-a = 2
-```
-An equation: $e^{i\pi} -1 = 0$
+Given $x, y \sim \text{Uniform}(0,1)$, the probability density function (PDF) is $f(x,y) = 1$ for $0 \le x,y \le 1$.
+
+$$
+\begin{aligned}
+\mathbb{E}[|y-x|] &= \int_{0}^{1} \int_{0}^{1} |y-x| \, dy \, dx \\
+&= \int_{0}^{1} \left[ \int_{0}^{x} (x-y) \, dy + \int_{x}^{1} (y-x) \, dy \right] dx \\
+&= \int_{0}^{1} \left[ \left[xy - \frac{y^2}{2}\right]_{0}^{x} + \left[\frac{y^2}{2} - xy\right]_{x}^{1} \right] dx \\
+&= \int_{0}^{1} \left[ \left(x^2 - \frac{x^2}{2}\right) + \left(\left(\frac{1}{2} - x\right) - \left(\frac{x^2}{2} - x^2\right)\right) \right] dx \\
+&= \int_{0}^{1} \left[ \frac{x^2}{2} + \frac{1}{2} - x + \frac{x^2}{2} \right] dx \\
+&= \int_{0}^{1} \left(x^2 - x + \frac{1}{2}\right) \, dx \\
+&= \left[ \frac{x^3}{3} - \frac{x^2}{2} + \frac{x}{2} \right]_{0}^{1} \\
+&= \frac{1}{3} - \frac{1}{2} + \frac{1}{2} \\
+&= \mathbf{\frac{1}{3}}
+\end{aligned}
+$$
 
 """
 
