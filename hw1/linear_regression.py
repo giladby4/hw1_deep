@@ -67,7 +67,7 @@ class LinearRegressor(BaseEstimator, RegressorMixin):
 
 
 def fit_predict_dataframe(
-    model, df: DataFrame, target_name: str, feature_names: List[str] = None,
+        model, df: DataFrame, target_name: str, feature_names: List[str] = None,
 ):
     """
     Calculates model predictions on a dataframe, optionally with only a subset of
@@ -223,7 +223,7 @@ def r2_score(y: np.ndarray, y_pred: np.ndarray):
 
 
 def cv_best_hyperparams(
-    model: BaseEstimator, X, y, k_folds, degree_range, lambda_range
+        model: BaseEstimator, X, y, k_folds, degree_range, lambda_range
 ):
     """
     Cross-validate to find best hyperparameters with k-fold CV.
@@ -250,7 +250,13 @@ def cv_best_hyperparams(
     #  - You can use MSE or R^2 as a score.
 
     # ====== YOUR CODE: ======
-    raise NotImplementedError()
+    #print(model.get_params().keys())
+    parameters_grid = {'bostonfeaturestransformer__degree' : degree_range,
+                       'linearregressor__reg_lambda' : lambda_range}
+    k_folds = sklearn.model_selection.KFold(n_splits=k_folds, shuffle=True)
+    k_folds_grid_search = sklearn.model_selection.GridSearchCV(model, parameters_grid, cv=k_folds,scoring='r2')
+    k_folds_grid_search.fit(X, y)
+    best_params = k_folds_grid_search.best_params_
     # ========================
 
     return best_params
